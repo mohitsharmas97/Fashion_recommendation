@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ product.ProductTitle }} – FashionAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">Fashion<span class="logo-accent">AI</span></span>
+            </a>
+            <a href="/" class="back-link">← Back to Search</a>
+        </div>
+    </header>
+
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="product-detail-grid">
+                <!-- Left: Image -->
+                <div class="product-detail-image-wrap">
+                    <img src="{{ product.ImageURL }}" alt="{{ product.ProductTitle }}" class="product-detail-img"
+                        onerror="this.src='{{ url_for('static', filename='images/placeholder.svg') }}'" />
+                    <div class="product-badges-row">
+                        <span class="detail-badge">{{ product.Usage }}</span>
+                        <span class="detail-badge">{{ product.Gender }}</span>
+                        <span class="detail-badge">{{ product.Category }}</span>
+                    </div>
+                </div>
+
+                <!-- Right: Details -->
+                <div class="product-detail-info">
+                    <p class="product-detail-type">{{ product.Category }} › {{ product.SubCategory }} › {{
+                        product.ProductType }}</p>
+                    <h1 class="product-detail-title">{{ product.ProductTitle }}</h1>
+
+                    <div class="product-detail-meta">
+                        <span class="detail-price">₹{{ "{:,}".format(product.Price) }}</span>
+                        <span class="detail-rating">⭐ {{ product.Rating }} <span class="review-count">({{
+                                product.Reviews }} reviews)</span></span>
+                    </div>
+
+                    <div class="product-attrs">
+                        <div class="attr-row">
+                            <span class="attr-label">Colour</span>
+                            <span class="attr-value"><span class="colour-dot"
+                                    style="background:{{ product.Colour | lower }}"></span> {{ product.Colour }}</span>
+                        </div>
+                        <div class="attr-row">
+                            <span class="attr-label">Gender</span>
+                            <span class="attr-value">{{ product.Gender }}</span>
+                        </div>
+                        <div class="attr-row">
+                            <span class="attr-label">Usage</span>
+                            <span class="attr-value">{{ product.Usage }}</span>
+                        </div>
+                        <div class="attr-row">
+                            <span class="attr-label">Type</span>
+                            <span class="attr-value">{{ product.ProductType }}</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-actions">
+                        <button class="btn-primary btn-large">🛒 Add to Cart</button>
+                        <button class="btn-secondary btn-large">♡ Wishlist</button>
+                    </div>
+
+                    <!-- AI Outfit Advice -->
+                    {% if outfit_advice %}
+                    <div class="outfit-advice-box">
+                        <div class="ai-avatar small">✦</div>
+                        <div>
+                            <p class="advice-label">AI Stylist Says:</p>
+                            <p class="advice-text">{{ outfit_advice }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Outfit Recommendations -->
+            {% if outfit_products %}
+            <div class="outfit-section">
+                <h2 class="section-title">Complete Your Outfit</h2>
+                <p class="section-subtitle">AI-curated items that pair perfectly with this piece</p>
+                <div class="product-grid">
+                    {% for p in outfit_products %}
+                    <div class="product-card" onclick="window.location='/product/{{ p.ProductId }}'">
+                        <div class="product-image-wrap">
+                            <img src="{{ p.ImageURL }}" alt="{{ p.ProductTitle }}" class="product-img" loading="lazy"
+                                onerror="this.src='{{ url_for('static', filename='images/placeholder.svg') }}'" />
+                            <div class="product-badge">{{ p.Usage }}</div>
+                            <div class="product-overlay">
+                                <button class="overlay-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <p class="product-type">{{ p.ProductType }} · {{ p.Colour }}</p>
+                            <h3 class="product-title">{{ p.ProductTitle | truncate(50) }}</h3>
+                            <div class="product-footer">
+                                <span class="product-price">₹{{ "{:,}".format(p.Price) }}</span>
+                                <span class="product-rating">⭐ {{ p.Rating }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-copy">© 2025 FashionAI • Powered by Google Gemini & ChromaDB</p>
+        </div>
+    </footer>
+</body>
+
+</html>

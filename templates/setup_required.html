@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup Required – FashionAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+    <div class="setup-page">
+        <div class="setup-card">
+            <div class="setup-icon">⚙️</div>
+            <h1>Setup Required</h1>
+            <p>The database hasn't been initialized yet. Run the setup script once before starting the server.</p>
+            <div class="setup-steps">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <div>
+                        <strong>Copy fashion.csv to this folder</strong>
+                        <p>From your Kaggle dataset download</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <div>
+                        <strong>Set your Gemini API key</strong>
+                        <pre>set GEMINI_API_KEY=your_api_key_here</pre>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-num">3</span>
+                    <div>
+                        <strong>Run the setup script</strong>
+                        <pre>python setup_database.py</pre>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-num">4</span>
+                    <div>
+                        <strong>Restart the server</strong>
+                        <pre>python app.py</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
