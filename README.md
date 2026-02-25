@@ -1,14 +1,15 @@
-# 🛍️ AI Fashion E-Commerce Platform
+# AI Fashion E-Commerce Platform
 ### Smart Outfit Recommendations powered by Google Gemini + ChromaDB
+<img width="1880" height="854" alt="Screenshot 2026-02-25 180800" src="https://github.com/user-attachments/assets/1c173b25-0672-42ad-9c68-d34241603578" />
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fashion/
 ├── app.py               # Flask web server (main entry point)
-├── setup_database.py    # ⚠️ Run ONCE to initialize databases
+├── setup_database.py    #  Run ONCE to initialize databases
 ├── search.py            # AI search logic (Gemini + ChromaDB)
 ├── database.py          # SQLite helper
 ├── requirements.txt     # Python dependencies
@@ -30,7 +31,7 @@ fashion/
 
 ---
 
-## 🚀 Setup Instructions (Step by Step)
+##  Setup Instructions (Step by Step)
 
 ### Step 1 — Install Dependencies
 ```bash
@@ -76,20 +77,20 @@ http://localhost:5000
 
 ---
 
-## 🎯 Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
-| 💬 **Text Search** | Natural language: "blue formal shirts under 2000" |
-| 📷 **Image Search** | Upload a photo → find similar items |
-| 🤖 **AI Fashion Advice** | Gemini explains why products match |
-| 👗 **Outfit Recommendations** | AI suggests complementary items |
-| 🔍 **Smart Filters** | Auto-extracts price, color, gender from query |
-| 📱 **Responsive UI** | Works on mobile and desktop |
+|**Text Search** | Natural language: "blue formal shirts under 2000" |
+| **Image Search** | Upload a photo → find similar items |
+|**AI Fashion Advice** | Gemini explains why products match |
+| **Outfit Recommendations** | AI suggests complementary items |
+| **Smart Filters** | Auto-extracts price, color, gender from query |
+| **Responsive UI** | Works on mobile and desktop |
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend**: HTML, CSS (Dark Glassmorphism), JavaScript
 - **Backend**: Flask (Python)
@@ -100,7 +101,7 @@ http://localhost:5000
 
 ---
 
-## 💡 Example Queries
+##  Example Queries
 
 - `show me blue formal shirts under 2000`
 - `suggest party wear for women, not too casual`
@@ -111,7 +112,7 @@ http://localhost:5000
 
 ---
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 **"Setup Required" page shows?**
 → Run `python setup_database.py` first
